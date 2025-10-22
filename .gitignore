@@ -1,0 +1,5 @@
+env/
+ticket_turno/__pycache__/
+ticket_turno/ticket_turno/__pycache__/
+ticket_turno/tickets/__pycache__/
+ticket_turno/.env
