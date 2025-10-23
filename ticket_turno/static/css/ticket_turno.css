@@ -1,6 +1,6 @@
 h1{
     text-align: center;
-    margin: 2rem 0;
+    margin: 0.5rem 0;
     font-size: 3rem;
     background: linear-gradient(90deg, rgba(63,174,174,1) 0%, rgba(25,118,210,1) 100%);
     -webkit-background-clip: text;
@@ -75,7 +75,7 @@ button:hover{
     justify-content: center;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1200px) {
     form {
         max-width: 60%;
         padding: 2rem;

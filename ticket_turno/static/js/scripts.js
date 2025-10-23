@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (isValid) {
                 event.preventDefault(); // Evitar el envío real del formulario para demostración
                 const formData = new FormData(document.querySelector('form'));
-                const req = await fetch('/post_ticket/', {
+                const req = await fetch('tickets/post_ticket/', {
                     method: 'POST',
                     headers: {
                         'X-CSRFToken': formData.get('csrfmiddlewaretoken')
@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     // Enviar a los detalles del ticket
                     const responseData = await req.json();
                     const ticketId = responseData.ticket_id;
-                    window.location.href = `/get_ticket/${ticketId}/`;
+                    window.location.href = `tickets/get_ticket/${ticketId}/`;
                 }
             }
         });

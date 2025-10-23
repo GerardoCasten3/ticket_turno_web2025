@@ -17,13 +17,16 @@
             <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">&#9776;</button>
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="{% url 'ticket_view' %}">Nuevo ticket</a></li>
-                <li><a href="{% url 'ticket_view' %}">Buscar ticket</a></li>
+                <li><a id="search-ticket-link" href="#">Consultar ticket</a></li>
+                <li><a id="edit-ticket-link" href="#">Editar ticket</a></li>
             </ul>
         </div>
     </nav>
     <main>
         {% block content %}{% endblock %}
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{% static 'js/base.js' %}"></script>
     {% block extra_scripts %}{% endblock %}
 </body>
 </html>

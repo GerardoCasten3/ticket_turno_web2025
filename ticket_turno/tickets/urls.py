@@ -6,4 +6,7 @@ urlpatterns = [
     path('request_municipios/<int:estado_id>/', views.request_estado_municipios, name='request_estado_municipios'),
     path('post_ticket/', views.post_ticket, name='post_ticket'),
     path('get_ticket/<int:ticket_id>/', views.get_ticket, name='get_ticket'),
+    path('search_ticket/<int:ticket_id>/', views.search_ticket, name='search_ticket'),
+    path('get_edit_ticket/<int:ticket_id>/', views.get_edit_ticket, name='edit_ticket'),
+    path('update_ticket/<int:ticket_id>/', views.update_ticket, name='update_ticket'),
 ]
