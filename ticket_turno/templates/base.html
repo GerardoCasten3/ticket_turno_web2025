@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block extra_styles %}{% endblock %}
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/" id="nav-brand">
+            <span class="nav-brand">Sistema de Ticket de Turno</span>
+            </a>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">&#9776;</button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="{% url 'ticket_view' %}">Nuevo ticket</a></li>
+                <li><a href="{% url 'ticket_view' %}">Buscar ticket</a></li>
+            </ul>
+        </div>
+    </nav>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

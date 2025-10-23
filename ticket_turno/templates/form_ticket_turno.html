@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Ticket de Turno{% endblock %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css/ticket_turno.css' %}">
+{% endblock %}
+
+{% block content %}
+ <h1>Generar ticket de turno</h1>
+    <form>
+        {% csrf_token %}
+        <div class="form-row">
+            <label for="full_name_request">Nombre completo de quien realiza el trámite:*</label>
+            <input type="text" id="full_name_request" name="full_name_request" placeholder="Ingrese nombre solicitante" required>
+
+            <label for="curp">CURP:*</label>
+            <input type="text" maxlength="18" id="curp" name="curp" placeholder="Máx. 18 caracteres" required>
+        </div>
+
+        <div class="form-row">
+            <label for="student_name">Nombre:*</label>
+            <input type="text" id="student_name" name="student_name" placeholder="Ingrese nombre del alumno" required>
+
+            <label for="last_name1">Apellido Paterno:*</label>
+            <input type="text" id="last_name1" name="last_name1" placeholder="Ingrese apellido paterno" required>
+
+            <label for="last_name2">Apellido Materno:*</label>
+            <input type="text" id="last_name2" name="last_name2" placeholder="Ingrese apellido materno" required>
+        </div>
+
+        <div class="form-row">
+            <label for="telephone">Teléfono:*</label>
+            <input type="tel" maxlength="10" id="telephone" name="telephone" placeholder="Máx. 10 caracteres" required>
+
+            <label for="cellphone">Celular:*</label>
+            <input type="tel" maxlength="10" id="cellphone" name="cellphone" placeholder="Máx. 10 caracteres" required>
+
+            <label for="email">Correo:*</label>
+            <input type="email" id="email" name="email" placeholder="ejemplo@dominio.com" required>
+        </div>
+
+        <div class="form-row">
+            <label for="level">Nivel al que desea ingresar o que ya cursa el alumno: *</label>
+            <select name="level" id="level">
+                <option value="" disabled selected>Seleccione un nivel</option>
+                {% for nivel in niveles %}
+                    <option value="{{ nivel.id }}">{{ nivel.nombre }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-row">
+            <label for="state">Estado donde desea estudie el alumno: *</label>
+            <select name="state" id="state">
+                <option value="" disabled selected>Seleccione un estado</option>
+                {% for estado in estados %}
+                    <option value="{{ estado.id }}">{{ estado.nombre }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div id="select_municipio" class="form-row" style="display: none;">
+            <label for="city">Municipio donde desea estudie el alumno: *</label>
+            <select name="city" id="city">
+                <option value="" disabled selected>Seleccione un municipio</option>
+            </select>
+        </div>
+
+        <div class="form-row">
+            <label for="issue">Seleccione el asunto que va a tratar: *</label>
+                <select name="issue" id="issue">
+                    <option value="" disabled selected>Seleccione un asunto</option>    
+                    {% for asunto in asuntos %}
+                        <option value="{{ asunto.id }}">{{ asunto.descripcion }}</option>
+                    {% endfor %}
+                </select>
+        </div>
+
+        <button type="submit">Generar Turno</button>
+        <p>* Campos obligatorios</p>
+
+    </form>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{% static 'js/scripts.js' %}"></script>
+{% endblock %}

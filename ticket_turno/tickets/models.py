@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Estado(models.Model):
-    cve_estado = models.IntegerField()
+    cve_estado = models.CharField(max_length=3)
     nombre = models.CharField(max_length=80)
 
     class Meta:
@@ -14,7 +14,7 @@ class Estado(models.Model):
         return self.nombre
     
 class Municipio(models.Model):
-    cve_municipio = models.IntegerField()
+    cve_municipio = models.CharField(max_length=3)
     nombre = models.CharField(max_length=80)
     estado = models.ForeignKey(Estado, on_delete=models.CASCADE)
 
