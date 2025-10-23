@@ -116,11 +116,9 @@ def get_edit_ticket(request, ticket_id):
 @require_http_methods(["POST"])
 def update_ticket(request, ticket_id):
     try:
-        # Obtener la cita existente
         cita = Cita.objects.get(id=ticket_id)
         alumno_cita = cita.alumno_cita
 
-        # Actualizar datos del formulario
         nivel_id = request.POST.get('level')
         estado_id = request.POST.get('state')
         municipio_id = request.POST.get('city')
@@ -134,7 +132,6 @@ def update_ticket(request, ticket_id):
         curp = request.POST.get('curp')
         full_name_request = request.POST.get('full_name_request')
 
-        # Actualizar datos del alumno
         alumno_cita.nombre = nombre
         alumno_cita.apellido_paterno = apellido_paterno
         alumno_cita.apellido_materno = apellido_materno
@@ -144,7 +141,6 @@ def update_ticket(request, ticket_id):
         alumno_cita.email = correo
         alumno_cita.save()
 
-        # Actualizar datos de la cita
         nivel_educativo = NivelEducativo.objects.get(id=nivel_id)
         municipio = Municipio.objects.get(id=municipio_id)
         asunto = Asuntos.objects.get(id=asunto_id)
@@ -155,7 +151,6 @@ def update_ticket(request, ticket_id):
         cita.nivel_educativo = nivel_educativo
         cita.save()
 
-        # Redirigir a la vista del ticket actualizado
         return redirect('get_ticket', ticket_id=ticket_id)
         
     except Cita.DoesNotExist:
